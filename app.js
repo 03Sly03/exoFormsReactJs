@@ -21,17 +21,15 @@ class App extends React.Component {
         })
     }
 
-    commentsObjects = {
-        name: this.state.nameToAdd,
-        message: this.state.textToAdd
-    }
-
-    
-
-    savecomments = (event) => {
+    saveComments = (event) => {
         event.preventDefault(event);
 
-        let newcomments = [...this.state.comments, this.commentsObjects]
+        let commentsObjects = {
+            name: this.state.nameToAdd,
+            message: this.state.textToAdd
+        }
+
+        let newcomments = [...this.state.comments, commentsObjects]
         
         this.setState({
             comments: newcomments
@@ -48,7 +46,7 @@ class App extends React.Component {
                     <input className="input" type="text" onChange={this.addingName} value={this.state.nameToAdd} placeholder="Your Name"/>
                     <textarea className="textarea" type="text" onChange={this.addingText} value={this.state.textToAdd} placeholder="Your Comment" >{this.state.textToAdd}</textarea>
 
-                    <button className="button is-primary" onClick={this.savecomments}>Submit</button>
+                    <button className="button is-primary" onClick={this.saveComments}>Submit</button>
                 </form>
             </div>
         )
