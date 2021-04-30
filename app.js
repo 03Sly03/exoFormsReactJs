@@ -1,17 +1,17 @@
 class App extends React.Component {
 
     state = {
+        
         nameToAdd: "",
         textToAdd: "",
         comments: []
+        
     }
 
-    addingName = (event) => {
-        
+    addingName = (event) => {   
         this.setState({
             nameToAdd: event.target.value
         })
-        
     }
 
     addingText = (event) => {
@@ -21,18 +21,22 @@ class App extends React.Component {
         })
     }
 
+    commentsObjects = {
+        name: this.state.nameToAdd,
+        message: this.state.textToAdd
+    }
+
     
 
     savecomments = (event) => {
         event.preventDefault(event);
 
-
-
-        let newcomments = [...this.state.comments, `name: ${this.state.nameToAdd}, message: ${this.state.textToAdd}`]
+        let newcomments = [...this.state.comments, this.commentsObjects]
         
         this.setState({
             comments: newcomments
         })
+        
         console.log(newcomments);
     }
 
